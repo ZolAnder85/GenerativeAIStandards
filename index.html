@@ -1,8 +1,59 @@
 <html>
+	<head>
+		<style>
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: Helvetica, Arial, sans-serif;
+	background: rgb(25, 25, 25);
+	color: rgb(200, 200, 200);
+}
+
+body {
+	max-width: 1000px;
+	margin: auto;
+}
+
+section,
+article {
+	display: block;
+	margin: 20px;
+	padding: 5px;
+	background: rgb(35, 35, 35);
+	border-radius: 8px;
+}
+
+section > *,
+article > * {
+	display: block;
+	margin: 15px;
+}
+
+em {
+	font-style: normal;
+	font-weight: bold;
+	color: rgb(220, 80, 80);
+}
+
+code {
+	padding-left: 20px;
+	padding-right: 20px;
+	white-space: pre-wrap;
+	font-family: "Anonymous Pro", Menlo, monospace;
+	line-height: 1.2;
+	tab-size: 3;
+	color: rgb(50, 120, 200);
+	background: rgb(25, 25, 25);
+	border-radius: 8px;
+}
+		</style>
+	</head>
 	<body>
 		<section>
 			<h1>
-				Generative AI Standards Proposal – DRAFT
+				Generative AI Standards Proposal <em>DRAFT</em>
 			</h1>
 		</section>
 		<article>
@@ -17,9 +68,47 @@
 			<h3>
 				Supported Parameters Request
 			</h3>
+			<code>
+{
+	"name": {
+		"type": "string" | "number",
+		? "values": string[] | number[],
+		? "range": {
+			? "min": number,
+			? "max": number,
+			? "step": number,
+			? "default": number
+		}
+	},
+	...
+}
+			</code>
 			<h3>
 				Available Models Request
 			</h3>
+			<p>
+				Specify model type in POST.
+				<ul>
+					<li>main</li>
+					<li>lora</li>
+					<li>control</li>
+					<li>sampler</li>
+					<li>upscaler</li>
+					<li>restoration</li>
+					<li>...</li>
+				</ul>
+			</p>
+			<code>
+{
+	"name": {
+		"displayName": string,
+		"value": string,
+		? "description": string,
+		? "thumbnail": base64
+	},
+	...
+}
+			</code>
 			<h3>
 				Text to Image
 			</h3>
